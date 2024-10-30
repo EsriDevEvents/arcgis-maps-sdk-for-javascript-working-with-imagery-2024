@@ -1,14 +1,10 @@
 require([
-    "esri/Map",
-    "esri/views/MapView",
     "esri/layers/ImageryTileLayer",
-    "esri/layers/FeatureLayer",
     "esri/Graphic",
     "esri/geometry/Circle",
     "esri/layers/support/TileInfo",
-    "esri/core/promiseUtils",
-    "esri/widgets/Expand"
-  ], (Map, MapView, ImageryTileLayer, FeatureLayer, Graphic, Circle, TileInfo, promiseUtils, Expand) =>
+    "esri/core/promiseUtils"
+  ], (ImageryTileLayer, Graphic, Circle, TileInfo, promiseUtils) =>
     (async () => {
 
         const arcgisMap = document.querySelector("arcgis-map");
