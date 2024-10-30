@@ -1,8 +1,8 @@
 > **Note:** Please follow the [repository conventions](https://github.com/EsriDevEvents/contributor-guides/blob/main/conventions.md#conventions-for-repositories) and [slugify](https://slugify.online/) the title of your repo
 
-# Name of the session
+# ArcGIS Maps SDK for JavaScript: Working with imagery client-side
 
-[Description of the session]
+Learn about the core ArcGIS Maps SDK for JavaScript capabilities for working with ArcGIS Online hosted imagery and enterprise image services using tiled and dynamic imagery layers. The session will cover on-demand server-side processing and dynamic mosaicking, fast access to raster tiles, responsive client-side imagery renderers, built-in imagery projection support, displaying imagery in map and image space, and processing data with pixel filters.
 
 ## Slides and recording
 
