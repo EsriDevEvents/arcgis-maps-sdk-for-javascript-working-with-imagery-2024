@@ -1,0 +1,21 @@
+calcite-shell {
+  background-size: 16px 16px;
+  background-color: var(--calcite-color-background);
+  background-image: radial-gradient(circle, var(--calcite-color-border-3) 1px, transparent 1px);
+}
+
+calcite-navigation-logo {
+  --calcite-ui-icon-color: var(--calcite-color-text-1);
+}
+
+calcite-navigation {
+  --calcite-navigation-width: 80vw;
+}
+
+.tile-container {
+  margin: 2rem auto;
+  width: 80vw;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(10rem, 1fr));
+  grid-gap: 1rem;
+}

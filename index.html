@@ -1,0 +1,54 @@
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="initial-scale=1,maximum-scale=1,user-scalable=no" />
+    <title>2024 Esri Developer Summit - Designing Apps with Calcite Design System</title>
+
+    <!-- Calcite imports -->
+    <script type="module" src="https://js.arcgis.com/calcite-components/2.13.2/calcite.esm.js"></script>
+    <link rel="stylesheet" type="text/css" href="https://js.arcgis.com/calcite-components/2.13.2/calcite.css" />
+
+    <!-- ArcGIS Maps SDK for JavaScript imports -->
+    <script src="https://js.arcgis.com/4.30/"></script>
+    <link id="jsapi-mode-light" rel="stylesheet" href="https://js.arcgis.com/4.30/@arcgis/core/assets/esri/themes/light/main.css" />
+    <link disabled id="jsapi-mode-dark" rel="stylesheet" href="https://js.arcgis.com/4.30/esri/themes/dark/main.css" />
+    <script type="module" src="https://js.arcgis.com/map-components/4.30/arcgis-map-components.esm.js"></script>
+
+    <!-- Demo imports -->
+    <script src="./app.js" defer></script>
+    <link rel="stylesheet" href="./style.css" />
+  </head>
+
+  <body>
+    <calcite-shell>
+      <calcite-navigation slot="header" id="nav">
+        <calcite-navigation-logo
+          icon="code"
+          href=""
+          alt="Application logo"
+          slot="logo"
+          heading="ArcGIS Maps SDK for JavaScript: Working with imagery client-side"
+          description="Esri European Developer Summit 2024"
+        ></calcite-navigation-logo>
+      </calcite-navigation>
+      <div class="tile-container">
+        <calcite-tile href="/shell-slots/" icon="add-in" heading="Shell Slots" description="Shell + Shell Panel Scaffold"></calcite-tile>
+        <calcite-tile href="/app-map/" icon="clustering" heading="Map 1" description="Shell Panel + Map"></calcite-tile>
+        <calcite-tile href="/app-map-2/" icon="image-layer" heading="Map 2" description="Shell Panel + Map, Themed"></calcite-tile>
+        <calcite-tile href="/app-dashboard/" icon="viewshed" heading="Dashboard 1" description="Panel Dashboard + Map"></calcite-tile>
+        <calcite-tile
+          href="/app-dashboard-2/"
+          icon="classify-pixels"
+          heading="Dashboard 2"
+          description="Panel Dashboard + Map, Themed"
+        ></calcite-tile>
+        <calcite-tile
+          href="/app-showcase-frame/"
+          icon="footprint"
+          heading="Showcase frame"
+          description="A layout for showing an application"
+        ></calcite-tile>
+      </div>
+    </calcite-shell>
+  </body>
+</html>
