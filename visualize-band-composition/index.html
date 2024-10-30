@@ -1,0 +1,111 @@
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="initial-scale=1,maximum-scale=1,user-scalable=no" />
+    <title>2024 Esri Developer Summit - Designing Apps with Calcite Design System</title>
+
+    <!-- Calcite imports -->
+    <script type="module" src="https://js.arcgis.com/calcite-components/2.13.2/calcite.esm.js"></script>
+    <link rel="stylesheet" type="text/css" href="https://js.arcgis.com/calcite-components/2.13.2/calcite.css" />
+
+    <!-- ArcGIS Maps SDK for JavaScript imports -->
+    <script src="https://js.arcgis.com/4.30/"></script>
+    <link id="jsapi-mode-light" rel="stylesheet" href="https://js.arcgis.com/4.30/@arcgis/core/assets/esri/themes/light/main.css" />
+    <link disabled id="jsapi-mode-dark" rel="stylesheet" href="https://js.arcgis.com/4.30/esri/themes/dark/main.css" />
+    <script type="module" src="https://js.arcgis.com/map-components/4.30/arcgis-map-components.esm.js"></script>
+
+    <!-- Demo imports -->
+    <script src="./app.js" defer></script>
+    <link rel="stylesheet" href="./style.css" />
+  </head>
+
+  <body>
+    <calcite-shell>
+      <calcite-navigation navigation-action slot="header" id="nav">
+        <calcite-navigation-logo
+          href=""
+          icon="clustering"
+          alt="Application logo"
+          slot="logo"
+          heading="Visualize by choosing band composition and stretch type"
+          description="Esri European Developer Summit 2024"
+        ></calcite-navigation-logo>
+      </calcite-navigation>
+
+      <calcite-shell-panel slot="panel-start">
+        <calcite-panel heading="ArcGIS Maps SDK for JavaScript" description="Showcased product">
+          <calcite-block collapsible heading="Layer list">
+            <calcite-icon scale="s" slot="icon" icon="show-multiple-layers-at-a-time"></calcite-icon>
+            <arcgis-layer-list reference-element="map">
+            </arcgis-layer-list>
+          </calcite-block>
+          <calcite-block collapsible heading="Legend">
+            <calcite-icon scale="s" slot="icon" icon="legend"></calcite-icon>
+            <arcgis-legend reference-element="map" legend-style="classic">
+            </arcgis-legend>
+          </calcite-block>
+          <calcite-block collapsible heading="Basemap gallery">
+            <calcite-icon scale="s" slot="icon" icon="basemap"></calcite-icon>
+            <arcgis-basemap-gallery reference-element="map"></arcgis-basemap-gallery>
+          </calcite-block>
+          <calcite-block collapsible open heading="Band composition">
+            <calcite-icon scale="s" slot="icon" icon="image-layer"></calcite-icon>
+            <select id="bandIdsSelect" class="esri-input esri-select">
+              <option value="0,1,2" selected>Natural color</option>
+              <option value="3,1,2">Color Infrared</option>
+            </select>
+          </calcite-block>
+
+          <calcite-notice open scale="s" slot="footer">
+            <span slot="title">What is being demonstrated?</span>
+            <span slot="message">
+              This demonstration application showcases
+              <strong>visualizing</strong> a raster layer by means of <strong>band composition</strong>.
+            </span>
+          </calcite-notice>
+        </calcite-panel>
+      </calcite-shell-panel>
+
+      <arcgis-map id="map" basemap="topo" center="13.4,52.5" zoom="13"></arcgis-map>
+    </calcite-shell>
+
+    <!-- Demo template interactive elements -->
+    <calcite-alert open icon="effects" placement="bottom-end">
+      <div slot="title">Esri European Developer Summit 2024</div>
+      <div slot="message">
+        <pre class="hljs" style="display: block; overflow-x: auto; padding: 0.5em; background: rgb(240, 240, 240); color: rgb(68, 68, 68);"><span class="hljs-keyword" style="font-weight: 700;">const</span> berlinLayer = <span class="hljs-keyword" style="font-weight: 700;">new</span> ImageryTileLayer({
+          url: <span class="hljs-string" style="color: rgb(136, 0, 0);">"../data/berlin.tif"</span>,
+          bandIds: [<span class="hljs-number" style="color: rgb(136, 0, 0);">2</span>,<span class="hljs-number" style="color: rgb(136, 0, 0);">1</span>,<span class="hljs-number" style="color: rgb(136, 0, 0);">0</span>],
+          renderer
+        });</pre>
+      </div>
+    </calcite-alert>
+
+    <calcite-sheet id="sheet" display-mode="float" width-scale="m">
+      <calcite-panel heading="Esri European Developer Summit 2024" description="Helpful conference links" closable id="sheet-panel">
+        <calcite-menu layout="vertical" label="2024 Developer Summit Menu">
+          <calcite-menu-item
+            text="2024 European Developer Summit Overview"
+            icon-end="launch"
+            href="https://www.esri.com/en-us/about/events/devsummit-europe/overview"
+            target="_blank"
+          ></calcite-menu-item>
+          <calcite-menu-item
+            text="Esri Developer Events GitHub"
+            icon-end="launch"
+            href="https://github.com/EsriDevEvents"
+            target="_blank"
+          ></calcite-menu-item>
+          <calcite-menu-item text="Esri.com" icon-end="launch" href="https://esri.com" target="_blank"></calcite-menu-item>
+        </calcite-menu>
+        <calcite-notice open slot="footer" width="full" scale="s">
+          <span slot="title">Note</span>
+          <span slot="message"
+            >This is a demonstration application showcasing platform functionality. While Esri strives to ensure the sample is accurate, it
+            may not reflect implementation behavior in certain environments.</span
+          >
+        </calcite-notice>
+      </calcite-panel>
+    </calcite-sheet>
+  </body>
+</html>
