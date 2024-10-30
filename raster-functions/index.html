@@ -1,0 +1,103 @@
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="initial-scale=1,maximum-scale=1,user-scalable=no" />
+    <title>Transposed multidimensional ImageryTileLayer | Sample | 2024 Esri Developer Summit</title>
+
+    <!-- Calcite imports -->
+    <script type="module" src="https://js.arcgis.com/calcite-components/2.13.2/calcite.esm.js"></script>
+    <link rel="stylesheet" type="text/css" href="https://js.arcgis.com/calcite-components/2.13.2/calcite.css" />
+
+    <!-- ArcGIS Maps SDK for JavaScript imports -->
+    <script src="https://js.arcgis.com/4.30/"></script>
+    <link id="jsapi-mode-light" rel="stylesheet" href="https://js.arcgis.com/4.30/@arcgis/core/assets/esri/themes/light/main.css" />
+    <link disabled id="jsapi-mode-dark" rel="stylesheet" href="https://js.arcgis.com/4.30/esri/themes/dark/main.css" />
+    <script type="module" src="https://js.arcgis.com/map-components/4.30/arcgis-map-components.esm.js"></script>
+
+    <!-- Demo imports -->
+    <script src="./app.js" defer></script>
+    <script src="./rasterfunctions.js" defer></script>
+    <link rel="stylesheet" href="./style.css" />
+  </head>
+
+  <body>
+    <calcite-shell>
+      <calcite-navigation navigation-action slot="header" id="nav">
+        <calcite-navigation-logo
+          href=""
+          icon="clustering"
+          alt="Application logo"
+          slot="logo"
+          heading="Terrain Analysis"
+          description="Esri European Developer Summit 2024"
+        ></calcite-navigation-logo>
+      </calcite-navigation>
+
+      <calcite-shell-panel slot="panel-start">
+        <calcite-panel>
+            <calcite-slider min-value="1000" max-value="3000" id="eleSlider" label-handles min="0"
+            max="5000"></calcite-slider>
+          <br>Slope</br>
+          <calcite-slider min-value="15" max-value="30" id="slopeSlider" label-handles min="0"
+            max="90"></calcite-slider>
+          <br>Aspect</br>
+          <calcite-slider min-value="210" max-value="360" id="aspectSlider" label-handles min="0"
+            max="450"></calcite-slider>
+          <br>Opacity</br>
+          <calcite-slider value="100" id="opacitySlider" label-handles min="0" max="100"></calcite-slider>
+        </calcite-panel>
+        <calcite-panel heading="ArcGIS Maps SDK for JavaScript" description="Showcased product" id="app-title">
+          <calcite-block collapsible heading="Layer list">
+            <calcite-icon scale="s" slot="icon" icon="show-multiple-layers-at-a-time"></calcite-icon>
+            <arcgis-layer-list reference-element="map">
+            </arcgis-layer-list>
+          </calcite-block>
+          <calcite-block collapsible heading="Legend">
+            <calcite-icon scale="s" slot="icon" icon="legend"></calcite-icon>
+            <arcgis-legend reference-element="map" legend-style="classic">
+            </arcgis-legend>
+          </calcite-block>
+
+          <calcite-notice open scale="s" slot="footer">
+            <span slot="title">What is being demonstrated?</span>
+            <span slot="message">
+              This demonstration application showcases
+              <strong>working with chained raster functions</strong>.
+            </span>
+          </calcite-notice>
+        </calcite-panel>
+      </calcite-shell-panel>
+
+      <arcgis-map id="map" >
+        <arcgis-scale-bar position="bottom-left"></arcgis-scale-bar>
+      </arcgis-map>
+    </calcite-shell>
+
+    <calcite-sheet id="sheet" display-mode="float" width-scale="m">
+      <calcite-panel heading="Esri European Developer Summit 2024" description="Helpful conference links" closable id="sheet-panel">
+        <calcite-menu layout="vertical" label="2024 Developer Summit Menu">
+          <calcite-menu-item
+            text="2024 European Developer Summit Overview"
+            icon-end="launch"
+            href="https://www.esri.com/en-us/about/events/devsummit-europe/overview"
+            target="_blank"
+          ></calcite-menu-item>
+          <calcite-menu-item
+            text="Esri Developer Events GitHub"
+            icon-end="launch"
+            href="https://github.com/EsriDevEvents"
+            target="_blank"
+          ></calcite-menu-item>
+          <calcite-menu-item text="Esri.com" icon-end="launch" href="https://esri.com" target="_blank"></calcite-menu-item>
+        </calcite-menu>
+        <calcite-notice open slot="footer" width="full" scale="s">
+          <span slot="title">Note</span>
+          <span slot="message"
+            >This is a demonstration application showcasing platform functionality. While Esri strives to ensure the sample is accurate, it
+            may not reflect implementation behavior in certain environments.</span
+          >
+        </calcite-notice>
+      </calcite-panel>
+    </calcite-sheet>
+  </body>
+</html>
