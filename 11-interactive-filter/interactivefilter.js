@@ -2,9 +2,8 @@ require([
     "esri/layers/support/RasterFunction",
     "esri/layers/support/DimensionalDefinition",
     "esri/layers/ImageryTileLayer",
-    "esri/widgets/Legend",
     "esri/widgets/Slider"
-  ], (RasterFunction, DimensionalDefinition, ImageryTileLayer, Legend, Slider) =>
+  ], (RasterFunction, DimensionalDefinition, ImageryTileLayer, Slider) =>
     (async () => {
 
         const arcgisMap = document.querySelector("arcgis-map");
