@@ -14,6 +14,10 @@
     <link disabled id="jsapi-mode-dark" rel="stylesheet" href="https://js.arcgis.com/4.30/esri/themes/dark/main.css" />
     <script type="module" src="https://js.arcgis.com/map-components/4.30/arcgis-map-components.esm.js"></script>
 
+    <!-- Load the Coding Components -->
+    <link rel="stylesheet" type="text/css" href="https://js.arcgis.com/coding-components/4.30/arcgis-coding-components.css" />
+    <script type="module" src="https://js.arcgis.com/coding-components/4.30/arcgis-coding-components.esm.js"></script>
+
     <!-- Demo imports -->
     <script src="./app.js" defer></script>
     <link rel="stylesheet" href="./style.css" />
@@ -36,13 +40,11 @@
         <calcite-panel heading="ArcGIS Maps SDK for JavaScript" description="Showcased product">
           <calcite-block collapsible heading="Layer list">
             <calcite-icon scale="s" slot="icon" icon="show-multiple-layers-at-a-time"></calcite-icon>
-            <arcgis-layer-list reference-element="map">
-            </arcgis-layer-list>
+            <arcgis-layer-list reference-element="map"> </arcgis-layer-list>
           </calcite-block>
           <calcite-block collapsible open heading="Legend">
             <calcite-icon scale="s" slot="icon" icon="legend"></calcite-icon>
-            <arcgis-legend reference-element="map" legend-style="classic">
-            </arcgis-legend>
+            <arcgis-legend reference-element="map" legend-style="classic"> </arcgis-legend>
           </calcite-block>
           <calcite-block collapsible heading="Basemap gallery">
             <calcite-icon scale="s" slot="icon" icon="basemap"></calcite-icon>
@@ -63,13 +65,16 @@
     </calcite-shell>
 
     <!-- Demo template interactive elements -->
-    <calcite-alert open icon="effects" placement="bottom-end">
+    <calcite-alert open icon="code" placement="bottom-end">
       <div slot="title">Esri European Developer Summit 2024</div>
       <div slot="message">
-        <pre class="hljs" style="display: block; overflow-x: auto; padding: 0.5em; background: rgb(240, 240, 240); color: rgb(68, 68, 68);"><span class="hljs-keyword" style="font-weight: 700;">const</span> landCoverLayer = <span class="hljs-keyword" style="font-weight: 700;">new</span> ImageryLayer({
-  url: <span class="hljs-string" style="color: rgb(136, 0, 0);">"https://ic.imagery1.arcgis.com/arcgis/rest/services/Sentinel2_10m_LandCover/ImageServer"</span>
-});
-mapElem.addLayer(landCoverLayer);</pre>
+        <arcgis-code-editor  style="min-height: 150px;" language="javascript" value="async function handleViewReady(event) {
+  const ImageryLayer = await $arcgis.import('esri/layers/ImageryLayer');
+  const landCoverLayer = new ImageryLayer({
+    url: 'https://ic.imagery1.arcgis.com/arcgis/rest/services/Sentinel2_10m_LandCover/ImageServer'
+  });
+  mapElem.addLayer(landCoverLayer);
+}"></arcgis-arcade-editor>
       </div>
     </calcite-alert>
 
