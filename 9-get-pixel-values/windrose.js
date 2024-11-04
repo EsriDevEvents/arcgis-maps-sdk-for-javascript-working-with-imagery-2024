@@ -72,15 +72,19 @@ require([
             return;
           }
 
-          // first number is the magdirValue array is the wind magnitude
-          // second number is the magdirValue array is the direction the wind blew from.
+          // first number of the magdirValue array is the wind magnitude
+          // second number of the magdirValue array is the direction the wind blew from.
           const pixelValues = results.dataSeries.map(({ magdirValue }) => magdirValue);
 
-          //
-          const data = getFrequencies(pixelValues);
-          drawChart(data);
+          drawWindrose(pixelValues);
+          
           document.getElementById("instructionsDiv").style.display = "none";
         }
+      }
+
+      function drawWindrose(pixelValues) {
+        const data = getFrequencies(pixelValues);
+        drawChart(data);
       }
 
 
