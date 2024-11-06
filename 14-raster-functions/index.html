@@ -35,16 +35,23 @@
 
       <calcite-shell-panel slot="panel-start">
         <calcite-panel>
-            <calcite-slider min-value="1000" max-value="3000" id="eleSlider" label-handles min="0"
-            max="5000"></calcite-slider>
-          <br>Slope</br>
-          <calcite-slider min-value="15" max-value="30" id="slopeSlider" label-handles min="0"
-            max="90"></calcite-slider>
-          <br>Aspect</br>
-          <calcite-slider min-value="210" max-value="360" id="aspectSlider" label-handles min="0"
-            max="450"></calcite-slider>
-          <br>Opacity</br>
-          <calcite-slider value="100" id="opacitySlider" label-handles min="0" max="100"></calcite-slider>
+            <div style="padding: 0 10px; margin-top: -20px;">
+                <br>Opacity</br>
+                <calcite-slider value="100" id="opacitySlider" label-handles min="0" max="100"></calcite-slider>
+
+                Elevation
+                <calcite-slider min-value="800" max-value="1800" id="eleSlider" label-handles min="0" max="2500"></calcite-slider>
+                <br />
+                Slope
+                <calcite-slider min-value="15" max-value="30" id="slopeSlider" label-handles min="0" max="90"></calcite-slider>
+                <br/>
+                Aspect
+                <calcite-slider min-value="210" max-value="360" id="aspectSlider" label-handles min="0" max="450"></calcite-slider>
+
+                <br />
+                <input type="checkbox" id="showElevation" class="" /><label class="">Apply functions</label>
+                <br />
+            </div>
         </calcite-panel>
         <calcite-panel heading="ArcGIS Maps SDK for JavaScript" description="Showcased product" id="app-title">
           <calcite-block collapsible heading="Layer list">
@@ -52,7 +59,7 @@
             <arcgis-layer-list reference-element="map">
             </arcgis-layer-list>
           </calcite-block>
-          <calcite-block collapsible heading="Legend">
+          <calcite-block collapsible heading="Legend" open>
             <calcite-icon scale="s" slot="icon" icon="legend"></calcite-icon>
             <arcgis-legend reference-element="map" legend-style="classic">
             </arcgis-legend>

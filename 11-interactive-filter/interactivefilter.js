@@ -1,19 +1,24 @@
 require([
     "esri/layers/support/RasterFunction",
+    "esri/layers/support/rasterFunctionUtils",
     "esri/layers/support/DimensionalDefinition",
     "esri/layers/ImageryTileLayer",
     "esri/widgets/Slider"
-  ], (RasterFunction, DimensionalDefinition, ImageryTileLayer, Slider) =>
+  ], (RasterFunction, rasterFunctionUtils, DimensionalDefinition, ImageryTileLayer, Slider) =>
     (async () => {
 
         const arcgisMap = document.querySelector("arcgis-map");
 
         function createMask(range = [29.9, 35.5]) {
-            return new RasterFunction({
-              functionName: "Mask",
-              functionArguments: {
+            // return new RasterFunction({
+            //     functionName: "Mask",
+            //     functionArguments: {
+            //         includedRanges: [...range]
+            //     }
+            // });
+
+            return rasterFunctionUtils.mask({
                 includedRanges: [...range]
-              }
             });
         }
 

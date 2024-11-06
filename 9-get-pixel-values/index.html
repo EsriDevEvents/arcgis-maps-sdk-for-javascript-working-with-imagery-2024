@@ -17,10 +17,6 @@
     <link disabled id="jsapi-mode-dark" rel="stylesheet" href="https://js.arcgis.com/4.30/esri/themes/dark/main.css" />
     <script type="module" src="https://js.arcgis.com/map-components/4.30/arcgis-map-components.esm.js"></script>
 
-    <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/styles/atom-one-light.min.css" />
-    <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/highlight.min.js"></script>
-    <script src="//cdnjs.cloudflare.com/ajax/libs/highlightjs-line-numbers.js/2.8.0/highlightjs-line-numbers.min.js"></script> -->
-
     <!-- Demo imports -->
     <script src="./app.js" defer></script>
     <script src="./windrose.js" defer></script>
@@ -87,51 +83,12 @@
             </span>
           </calcite-notice>
         </calcite-panel>
-        <!-- <calcite-action-bar slot="action-bar" id="actionBar">
-            <calcite-action active text="App" icon="apps" action-target="app-main"></calcite-action>
-            <calcite-action text="Code" icon="file-code" action-target="app-code"></calcite-action>
-        </calcite-action-bar> -->
       </calcite-shell-panel>
 
       <arcgis-map basemap="dark-gray-vector" center="-85, 40" zoom="3" id="map" >
         <arcgis-time-slider position="bottom-left"></arcgis-time-slider>
       </arcgis-map>
     </calcite-shell>
-    <!-- <calcite-popover heading="Code snippet" reference-element="app-title" open="false" pointer-disabled="true"
-                     id="app-code" closable>
-    <div>
-      <pre><code class="language-javascript">
-// current slice value
-const { value } = await layer.identify(currentLocation);
-
-
-// get data series for all dimensions
-if (!layer.rasterInfo.hasMultidimensionalTranspose) {
-  return;
-}
-
-const {dataSeries} = await layer.identify(currentLocation,
-    { transposedVariableName: "wind_magdir" }
-  );
-
-const pixelValues = dataSeries
-// general per-band values: value[0], value[1], ...
-  .map(({ value, magdirValue }) =&gt; ...... );
-
-drawWindRose(pixelValues);
-
-      </code></pre>
-    </div>
-  </calcite-popover> -->
-
-    <!-- Demo template interactive elements "NLDAS Daily average wind direction and speed between 1/1/2011 - 12/31/2011" -->
-    <!-- <calcite-alert open icon="effects" placement="bottom-end">
-      <div slot="title">Esri European Developer Summit 2024</div>
-      <div slot="message">
-        <pre class="hljs" style="display: block; overflow-x: auto; padding: 0.5em; background: rgb(240, 240, 240); color: rgb(68, 68, 68);">&lt;arcgis-map <span class="hljs-built_in" 
-            style="color: rgb(57, 115, 0);">item</span>-<span class="hljs-built_in" style="color: rgb(57, 115, 0);">id</span>=<span class="hljs-string" style="color: rgb(136, 0, 0);">"2fb085953984439487d79fc413d00840"</span> <span class="hljs-built_in" style="color: rgb(57, 115, 0);">id</span>=<span class="hljs-string" style="color: rgb(136, 0, 0);">"map"</span>&gt;&lt;/arcgis-map&gt;</pre>
-      </div>
-    </calcite-alert> -->
 
     <calcite-sheet id="sheet" display-mode="float" width-scale="m">
       <calcite-panel heading="Esri European Developer Summit 2024" description="Helpful conference links" closable id="sheet-panel">

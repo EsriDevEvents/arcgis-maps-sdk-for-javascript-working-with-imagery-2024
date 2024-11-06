@@ -5,8 +5,6 @@ require([
 
         const arcgisMap = document.querySelector("arcgis-map");
 
-        
-
       let windRoseChart;
 
       // create a new instance of an imagery tile layer and apply
@@ -219,32 +217,4 @@ require([
           windRoseChart.update();
         }
       }
-
-    //   const actionNodes = document.querySelectorAll("calcite-action");
-    //   const contentNodes = [document.getElementById("app-code")];
-    //   document.getElementById("actionBar").addEventListener("click", (evt) => {
-    //     const actionButton = evt.composedPath().find(({ tagName }) => tagName === "calcite-action".toUpperCase());
-    //     if (!actionButton) {
-    //       return;
-    //     }
-    //     actionNodes.forEach((node) => {
-    //       if (node === actionButton) {
-    //         node.setAttribute("active", "");
-    //       } else {
-    //         node.removeAttribute("active");
-    //       }
-    //     });
-    //     const targetName = actionButton.getAttribute("action-target");
-    //     contentNodes.forEach((node) => {
-    //       if (node.id === targetName) {
-    //         node.classList.add("active");
-    //         node.setAttribute("open", "true");
-    //       } else {
-    //         node.classList.remove("active");
-    //         node.setAttribute("open", "false");
-    //       }
-    //     });
-    //   });
-      // hljs.highlightAll();
-      // hljs.initLineNumbersOnLoad();
     })());

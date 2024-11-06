@@ -3,20 +3,13 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="initial-scale=1,maximum-scale=1,user-scalable=no" />
-  <title>Top-up image space | Sample | ArcGIS Maps SDK for JavaScript 4.26</title>
+  <title>Mensuration | Sample | ArcGIS Maps SDK for JavaScript 4.30</title>
 
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.0.0-alpha/Chart.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/underscore@1.13.1/underscore-umd-min.js"></script>
-  <link rel="stylesheet" href="https://js.arcgis.com/4.26/esri/themes/light/main.css" />
-  <script src="https://js.arcgis.com/4.26/"></script>
+    <script src="https://cdn.jsdelivr.net/npm/underscore@1.13.1/underscore-umd-min.js"></script>
+  <link rel="stylesheet" href="https://js.arcgis.com/4.30/esri/themes/light/main.css" />
+  <script src="https://js.arcgis.com/4.30/"></script>
   <script type="module" src="https://js.arcgis.com/calcite-components/1.0.3/calcite.esm.js"></script>
   <link rel="stylesheet" type="text/css" href="https://js.arcgis.com/calcite-components/1.0.3/calcite.css" />
-  <link rel="stylesheet"
-    href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/styles/atom-one-light.min.css" />
-  <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/highlight.min.js"></script>
-
-  <script
-    src="//cdnjs.cloudflare.com/ajax/libs/highlightjs-line-numbers.js/2.8.0/highlightjs-line-numbers.min.js"></script>
 
   <style>
     html,
@@ -274,38 +267,8 @@
         view.graphics.add(graphic);
         return graphic;
       }
-
-
-
-
-
-      const actionNodes = document.querySelectorAll("calcite-action");
-      const contentNodes = [document.getElementById("app-code")];
-      document.getElementById("actionBar").addEventListener("click", (evt) => {
-        const actionButton = evt.composedPath().find(({ tagName }) => tagName === "calcite-action".toUpperCase());
-        if (!actionButton) {
-          return;
-        }
-        actionNodes.forEach((node) => {
-          if (node === actionButton) {
-            node.setAttribute("active", "");
-          } else {
-            node.removeAttribute("active");
-          }
-        });
-        const targetName = actionButton.getAttribute("action-target");
-        contentNodes.forEach((node) => {
-          if (node.id === targetName) {
-            node.classList.add("active");
-            node.setAttribute("open", "true");
-          } else {
-            node.classList.remove("active");
-            node.setAttribute("open", "false");
-          }
-        });
-      });
-      // hljs.highlightAll();
     });
+
   </script>
 </head>
 
@@ -347,46 +310,8 @@
 
         </div>
       </calcite-panel>
-      <calcite-action-bar slot="action-bar" id="actionBar">
-        <calcite-action active text="App" icon="apps" action-target="app-main"></calcite-action>
-        <calcite-action text="Code" icon="file-code" action-target="app-code"></calcite-action>
-      </calcite-action-bar>
     </calcite-shell-panel>
   </calcite-shell>
-  <calcite-popover heading="Code snippet" reference-element="app-title" open="false" pointer-disabled="true"
-    id="app-code" closable>
-    <div>
-      <pre><code class="language-javascript">
-// setup top-up image space display
-const imageId = 1599;
-const layer = new ImageryLayer({
-  url: url,
-  mosaicRule: {
-    method: "lock-raster",
-    operation: "first",
-    lockRasterIds: [imageId]
-  }
-});
-const { extent, northDirection } = await layer.getCatalogItemICSInfo(imageId);
-const spatialReference = new SpatialReference({imageCoordinateSystem: {icsid: imageId}});
-const map = new Map({ layers: [layer] });
-view = new MapView({
-  map, extent, spatialReference,
-  container: "viewDiv"
-});
-
-// measure a building's height
-const params = {
-  fromGeometry: { spatialReference, x: base[0], y: base[1] },
-  toGeometry: { spatialReference, x: top[0], y: top[1] },
-  operationType: "base-and-top" // base-and-top-shadow, top-and-top-shadow
-};
-const result = await layer.measureHeight(params);
-const {value, uncertainty, unit } = result.height;
-
-      </code></pre>
-    </div>
-  </calcite-popover>
 </body>
 
 </html>
