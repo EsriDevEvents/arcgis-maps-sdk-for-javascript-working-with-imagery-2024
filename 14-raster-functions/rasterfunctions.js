@@ -59,43 +59,16 @@ require([
     });
 
     const updateTerrainLayer = (values) => {
-        // // Aspect values (concat all values for active directions)
-        // const aspects = aspectActions.filter(action => action.active).reduce((merged, action) => {
-        //     return merged.concat(action.values)
-        // }, []);
-    
-        // if (!values) {
-        //     values = {
-        //         height: { min: heightMin, max: heightMax },
-        //         slope: { min: slopeMin, max: slopeMax },
-        //         aspect: aspects
-        //     };
-        // } else {
-        //     values.aspect = aspects;
-        // }
-        
         const rasterFunctions = CreateRasterFunctions(values);
         imageryLayer.renderingRule = rasterFunctions;
-      };
+    };
 
-      const CreateRasterFunctions = (values) => {
-   
+    const CreateRasterFunctions = (values) => {
         // Create the aspect values
         let noDataRanges = [];
+        let inputRanges = values.aspect;
     
-        let inputRanges = values.aspect.sort((a, b) => a - b).slice();
-    
-        inputRanges = inputRanges.reduce((reduced, value) => {
-            const index = reduced.indexOf(value);
-            if (index > -1) {
-                reduced.splice(index, 1);
-            } else {
-                reduced.push(value);
-            }
-            return reduced;
-        }, []);
-    
-        inputRanges.forEach((value, i) => {
+        values.aspect.forEach((value, i) => {
             if (i == 0 && value > 0) {
                 noDataRanges.push(0, value);
             } else if (!(i & 1) && i > 0) {
@@ -106,14 +79,7 @@ require([
                 noDataRanges.push(value, 360);
             }
         });
-    
-        if (inputRanges.length == 0) {
-            inputRanges = [ 0, 360 ];
-            noDataRanges = [];
-        }
-    
-        const outputValues = new Array(inputRanges.length / 2).fill(1);
-    
+            
         var filterElevation = new RasterFunction({
             functionName: "Mask",
             functionArguments: {
@@ -126,10 +92,10 @@ require([
         var filterAspect = new RasterFunction({
             functionName: "Remap",
             functionArguments: {
-                inputRanges: inputRanges, // [ 0, 45, 315, 360 ],
-                outputValues: outputValues,
-                noDataRanges: noDataRanges, // [ 45, 315 ],
-                // Lage aspect
+                inputRanges: inputRanges,
+                outputValues: [1],
+                noDataRanges: noDataRanges,
+                // Create aspect
                 raster: new RasterFunction({
                     functionName: "Aspect",
                     functionArguments: {
