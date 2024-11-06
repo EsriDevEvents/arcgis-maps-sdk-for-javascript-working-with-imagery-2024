@@ -64,22 +64,7 @@ require([
     };
 
     const CreateRasterFunctions = (values) => {
-        // Create the aspect values
-        let noDataRanges = [];
-        let inputRanges = values.aspect;
-    
-        values.aspect.forEach((value, i) => {
-            if (i == 0 && value > 0) {
-                noDataRanges.push(0, value);
-            } else if (!(i & 1) && i > 0) {
-                // Even but not first
-                noDataRanges.push(inputRanges[i - 1], inputRanges[i]);
-            } else if (i == (inputRanges.length - 1) && value < 360) {
-                // Fill last gap
-                noDataRanges.push(value, 360);
-            }
-        });
-            
+        // Mask function to filter on selected elevation range
         var filterElevation = new RasterFunction({
             functionName: "Mask",
             functionArguments: {
@@ -89,23 +74,27 @@ require([
             }
         });
     
+        // Remap function to get the selected aspect range
         var filterAspect = new RasterFunction({
             functionName: "Remap",
             functionArguments: {
-                inputRanges: inputRanges,
+                inputRanges: [values.aspect[0], values.aspect[1]],
                 outputValues: [1],
-                noDataRanges: noDataRanges,
+                noDataRanges: [
+                    0, values.aspect[0], values.aspect[1], 360
+                ],
                 // Create aspect
                 raster: new RasterFunction({
                     functionName: "Aspect",
                     functionArguments: {
-                        // apply elevation filter
+                        // Apply elevation filter
                         raster: filterElevation
                     }
                 })
             }
         });
     
+        // Remap function to get the selected slope range
         var filterSlope = new RasterFunction({
             functionName: "Remap",
             functionArguments: {
@@ -126,7 +115,7 @@ require([
                                 expression: "r1+r2",
                                 rasters: [
                                     "$$",
-                                    filterAspect
+                                    filterAspect // using aspect function as input
                                 ]
                             }
                         })
@@ -135,13 +124,14 @@ require([
             }
         });
     
+        // Colormap function to render the result
         var colormap = new RasterFunction({
             functionName: "Colormap",
             functionArguments: {
                 colormap: [
                     [1, 255, 0, 0]
                 ],
-                raster: filterSlope
+                raster: filterSlope // using slope function as input
             }
         });
     
