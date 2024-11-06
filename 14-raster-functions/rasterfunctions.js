@@ -22,13 +22,13 @@ require([
         id: "basemap"
     });
 
-    const url = ""; // There is open elevation data for Norway, go to https://hoydedata.no/ to find the most current elevation service
-    const imageryLayer = new ImageryLayer(url);
+    const url = ""; // There is open elevation data for Norway, visit https://hoydedata.no/ to find the most current elevation service
+    const imageryLayer = new ImageryLayer({url, opacity: .5});
 
     const terrainConfig = {
         elevation: [800, 1800],
         slope: [15, 35],
-        aspect: [210, 360]
+        aspect: [250, 360]
     }
 
     arcgisMap.addLayer(imageryLayer);
@@ -38,7 +38,7 @@ require([
             updateTerrainLayer(terrainConfig);
         }
         else {
-            imageryLayer.renderingRule = null;
+            imageryLayer.rasterFunction = null;
         }
     });
 
@@ -60,7 +60,7 @@ require([
 
     const updateTerrainLayer = (values) => {
         const rasterFunctions = CreateRasterFunctions(values);
-        imageryLayer.renderingRule = rasterFunctions;
+        imageryLayer.rasterFunction = rasterFunctions;
     };
 
     const CreateRasterFunctions = (values) => {
