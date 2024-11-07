@@ -24,8 +24,8 @@ async function handleViewReady(event) {
   const RasterStretchRenderer = await $arcgis.import("esri/renderers/RasterStretchRenderer");
   const layer = new ImageryTileLayer({
     url: "https://elevation3d.arcgis.com/arcgis/rest/services/WorldElevation3D/Terrain3D/ImageServer",
-    title: "World terrain",
-    blendMode: "destination-in"
+    title: "World Terrain",
+    blendMode: "normal"
   });
   await layer.load();
   layer.renderer = {

@@ -14,6 +14,10 @@
     <link disabled id="jsapi-mode-dark" rel="stylesheet" href="https://js.arcgis.com/4.30/esri/themes/dark/main.css" />
     <script type="module" src="https://js.arcgis.com/map-components/4.30/arcgis-map-components.esm.js"></script>
 
+    <!-- Load the Coding Components -->
+    <link rel="stylesheet" type="text/css" href="https://js.arcgis.com/coding-components/4.30/arcgis-coding-components.css" />
+    <script type="module" src="https://js.arcgis.com/coding-components/4.30/arcgis-coding-components.esm.js"></script>
+
     <!-- Demo imports -->
     <script src="./app.js" defer></script>
     <link rel="stylesheet" href="./style.css" />
@@ -99,9 +103,34 @@
     </calcite-shell>
 
     <!-- Demo template interactive elements -->
-    <calcite-alert open icon="effects">
+    <calcite-alert open icon="code">
       <div slot="title">Esri European Developer Summit 2024</div>
-      <div slot="message">Welcome to Berlin!</div>
+      <div slot="message">
+        <arcgis-code-editor language='javascript' value="const ImageryTileLayer = await $arcgis.import('esri/layers/ImageryTileLayer');
+const FlowRenderer = await $arcgis.import('esri/renderers/FlowRenderer');
+const layer = new ImageryTileLayer({
+  url: 'https://tiledimageservices.arcgis.com/LeHsdRPbeEIElrVR/arcgis/rest/services/uvmagdir/ImageServer',
+  title: 'Currents',
+  renderer: new FlowRenderer({
+    type: 'flow', // autocasts to new FlowRenderer
+    trailWidth: '2px',
+    density: 1,
+    visualVariables: [
+      {
+        type: 'color',
+        field: 'Magnitude',
+        stops: [
+          { color: [40, 146, 199, 1], value: 0 },
+          { color: [160, 194, 155, 1], value: 5 },
+          { color: [218, 230, 119, 1], value: 10 },
+        ],
+      },
+    ],
+  }),
+  effect: 'bloom(1.5, 0.5px, 0)',
+});
+mapElem.addLayer(layer);"></arcgis-arcade-editor>
+      </div>
     </calcite-alert>
 
     <calcite-sheet id="sheet" display-mode="float" width-scale="m">

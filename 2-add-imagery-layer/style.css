@@ -39,3 +39,9 @@ calcite-action-pad {
 #modal calcite-notice {
   margin-bottom: 1.25rem;
 }
+
+arcgis-code-editor {
+  width: 850px;
+  min-height: 150px;
+}
+

@@ -76,3 +76,8 @@ calcite-navigation-logo {
 calcite-shell-panel[slot="panel-start"] calcite-panel {
   border-top: 0;
 }
+
+arcgis-code-editor {
+  width: 900px;
+  min-height: 100px;
+}

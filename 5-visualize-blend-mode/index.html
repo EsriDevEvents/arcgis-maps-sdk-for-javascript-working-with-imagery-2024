@@ -13,6 +13,10 @@
     <link id="jsapi-mode-light" rel="stylesheet" href="https://js.arcgis.com/4.30/@arcgis/core/assets/esri/themes/light/main.css" />
     <link disabled id="jsapi-mode-dark" rel="stylesheet" href="https://js.arcgis.com/4.30/esri/themes/dark/main.css" />
     <script type="module" src="https://js.arcgis.com/map-components/4.30/arcgis-map-components.esm.js"></script>
+    
+    <!-- Load the Coding Components -->
+    <link rel="stylesheet" type="text/css" href="https://js.arcgis.com/coding-components/4.30/arcgis-coding-components.css" />
+    <script type="module" src="https://js.arcgis.com/coding-components/4.30/arcgis-coding-components.esm.js"></script>
 
     <!-- Demo imports -->
     <script src="./app.js" defer></script>
@@ -45,6 +49,7 @@
           <calcite-block collapsible open heading="Blend mode">
             <calcite-icon scale="s" slot="icon" icon="gear"></calcite-icon>            
             <calcite-select id="blendModeSelect">
+              <calcite-option value="normal">normal</calcite-option>
               <calcite-option value="destination-in">destination-in</calcite-option>
               <calcite-option value="destination-out">destination-out</calcite-option>
               <calcite-option value="multiply">multiply</calcite-option>
@@ -67,9 +72,13 @@
     </calcite-shell>
 
     <!-- Demo template interactive elements -->
-    <calcite-alert open icon="effects">
+    <calcite-alert open icon="code">
       <div slot="title">Esri European Developer Summit 2024</div>
-      <div slot="message">Welcome to Berlin!</div>
+      <div slot="message"><arcgis-code-editor language='javascript' value="const layer = new ImageryTileLayer({
+  url: 'https://elevation3d.arcgis.com/arcgis/rest/services/WorldElevation3D/Terrain3D/ImageServer',
+  title: 'World terrain',
+  blendMode: 'destination-in'
+});"></arcgis-arcade-editor></div>
     </calcite-alert>
 
     <calcite-sheet id="sheet" display-mode="float" width-scale="m">

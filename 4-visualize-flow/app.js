@@ -26,7 +26,6 @@ async function handleViewReady(event) {
     renderer: new FlowRenderer({
       type: "flow", // autocasts to new FlowRenderer
       trailWidth: "2px",
-      // color: [50, 120, 240, 1],
       density: 1,
       visualVariables: [
         {

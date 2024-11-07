@@ -64,11 +64,10 @@
       <arcgis-map id="map" basemap="topo" center="13.5,52.5" zoom="10"></arcgis-map>
     </calcite-shell>
 
-    <!-- Demo template interactive elements -->
     <calcite-alert open icon="code" placement="bottom-end">
       <div slot="title">Esri European Developer Summit 2024</div>
       <div slot="message">
-        <arcgis-code-editor  style="min-height: 150px;" language="javascript" value="async function handleViewReady(event) {
+        <arcgis-code-editor language="javascript" value="async function handleViewReady(event) {
   const ImageryLayer = await $arcgis.import('esri/layers/ImageryLayer');
   const landCoverLayer = new ImageryLayer({
     url: 'https://ic.imagery1.arcgis.com/arcgis/rest/services/Sentinel2_10m_LandCover/ImageServer'
